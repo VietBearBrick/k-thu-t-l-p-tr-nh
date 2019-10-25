@@ -1,0 +1,89 @@
+#include "iostream"
+using namespace std;
+const int MAX = 50;
+struct MaTran {
+	int list[MAX][MAX];
+	int n;
+	int m;
+};
+void Nhap(MaTran &a);
+void Xuat(MaTran a);
+int TinhTong(MaTran a);
+int TinhMinDuong(MaTran a);
+int HamA(MaTran a, int k);
+}
+#include "Header.h"
+void Nhap(MaTran& a) {
+	cout << "nhap so dong: ";
+	cin >> a.n;
+	cout << "nhap so cot: ";
+	cin >> a.m;
+	for (int i = 0; i < a.n; i++)
+		for (int j = 0; j < a.m; j++) {
+			cout << "a[" << j << "][" << j << "]=";
+			cin >> a.list[i][j];
+		}
+}
+void Xuat(MaTran a) {
+	for (int i = 0; i < a.n; i++) {
+		cout << endl;
+		for (int j = 0; j < a.m; j++)
+			cout << a.list[i][j] << " ";
+	}
+}
+int TinhTong(MaTran a) {
+	int s = 0;
+	for (int i = 0; i < a.n; i++)
+		for (int j = 0; j < a.m; j++)
+			s += a.list[i][j];
+	return s;
+}
+
+int TinhMinDuong(MaTran a) {
+	int min = 0, flag = 0;
+	for (int i = 0; i < a.n; i++)
+		for (int j = 0; j < a.m; j++)
+			if (a.list[i][j] > 0)
+				if (!flag) {
+					min = a.list[i][j];
+					flag = 1;
+				}
+				else
+					if (a.list[i][j] < min)
+						min = a.list[i][j];
+	return min;
+}
+
+int HamA(MaTran a, int k) {
+	int kq = 0, flag = 0;
+	for (int i = 0; i < a.n; i++)
+		if(a.list[i][k]>0)
+			if (!flag) {
+				kq = a.list[i][k];
+				flag = 1;
+			}
+			else
+				if (a.list[i][k] < kq)
+					kq = a.list[i][k];
+	return kq;
+  #include"Header.h"
+void main() {
+	MaTran a;
+	int s;
+	Nhap(a);
+	cout << "Ma Tran vua nhap la: ";
+	Xuat(a);
+	s = TinhTong(a)
+	cout << "tong cac phan tu: "<< s;
+  
+	int min;
+	min = TinhMinDuong(a);
+	cout << "min: " << min;
+  
+	int k,kq;
+	cout << "nhap gia tri k: ";
+	cin >> k;
+	kq = HamA(a, k);
+	cout << "gia tri HamA: " << kq;
+	system("pause");
+}
